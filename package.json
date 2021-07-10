@@ -1,8 +1,8 @@
 {
-  "name": "nest-graphql-typeorm-template",
+  "name": "nest-graphql-typeorm",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "AnDeriens",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
