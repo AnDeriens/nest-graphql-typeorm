@@ -8,3 +8,15 @@ services:
       - ./:/app
     command: ["npm", "run", "start:prod"]
 
+  postgres:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=app
+
