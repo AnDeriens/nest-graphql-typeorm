@@ -1,12 +1,18 @@
 import { Controller, Get } from '@nestjs/common';
+import { getRepository } from 'typeorm';
 import { AppService } from './app.service';
+import { User } from './entity/User';
+import { UserService } from './user/user.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly userService: UserService,
+  ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async getHello(): Promise<string> {
+    return this.userService.getName();
   }
 }
