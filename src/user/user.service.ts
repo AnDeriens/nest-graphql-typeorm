@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entity/User';
 import { Repository } from 'typeorm';
 
@@ -16,6 +16,6 @@ export class UserService {
   }
 
   async find(): Promise<User> {
-    return await this.userRepository.findOne();
+    return await this.userRepository.findOne({relations: ['todos']});
   }
 }

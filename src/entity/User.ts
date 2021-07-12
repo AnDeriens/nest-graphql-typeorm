@@ -2,8 +2,8 @@ import { Field, Int, ObjectType } from "@nestjs/graphql";
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import { Todo } from "./Todo";
 
-@ObjectType()
 @Entity()
+@ObjectType()
 export class User {
   @PrimaryGeneratedColumn()
   @Field(() => Int)
@@ -14,5 +14,8 @@ export class User {
   name: string
 
   @OneToMany(() => Todo, todo => todo.user)
+  @Field(() => [Todo], {
+    nullable: true
+  })
   todos: Todo[]
 }
